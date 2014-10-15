@@ -1,23 +1,15 @@
 #!/bin/bash
 
 set -e
-set -x
 
-dry_run=echo
-
-if [[ $# != 5 ]]; then
-  >&2 echo "usage: $0 <user@server> <album name> <download dir> <feed path> <mp3 name>"
-  >&2 echo "  The mp3 name should be in the format e.g. 2014-09-07-10:00_John Doe_The Title.mp3"
-  exit 1
-fi
+for x in server http_server album link_uri download_uri feed_path download_dir full_name; do
+  if [[ -z "${!x}" ]]; then
+    >&2 echo "$x must be set in environment"
+    exit 1
+  fi
+done
 
 # parse out the fields from the filename
-
-server="$1"
-album="$2"
-download_dir="$3"
-feed_path="$4"
-full_name="$5"
 
 name="$(basename "$full_name")"
 
@@ -52,42 +44,80 @@ function month-day {
 
 full_title="$(month-day "$year-$month-$day $hour:$minute") - $title"
 
+
 # determine the duration in minutes and seconds
 
-duration="$(mp3info -p %m "$name"):$(printf %02d $(mp3info -p %s "$name"))"
+duration="$(mp3info -p %m "$full_name"):$(printf %02d $(mp3info -p %s "$full_name"))"
+
+# determine file size in bytes
+
+size=$(du -b "$full_name" | cut -f 1)
 
 # set id3 tags according to above fields
 
 id3v2 --TIT2 "$full_title" --TALB "$album" --TCOM "$performer" --TPE1 "$performer" --TYER "$year" --TDAT "$day$month" --TIME "$hour$minute" "$full_name"
 
-# get next item identifier from server
+if [ -z "$id" ]; then
+  # get next item identifier from server
+  let id="$(ssh "$server" ls "$download_dir" | sort -n | tail -n 1) + 1"
+fi
 
-let id="$(ssh "$server" ls "$download_dir" | sort -n | tail -n 1) + 1"
+# generate download url
 
-# download feed.xml from server
+function url-encode {
+  perl -MURI::Escape -e 'print uri_escape($ARGV[0]);' "$1"
+}
 
-scp "$server:$feed_path" old.xml
+download_url="$http_server/$download_uri/$id/$(url-encode "$full_title").mp3"
 
-# edit feed.xml, adding a new item and removing the oldest one
+function update-feed {
+  # download feed.xml from server
 
-runhaskell update-feed.hs < old.xml > new.xml
+  scp "$server:$feed_path" old.xml
 
-# make new directory on server
+  # edit feed.xml, adding a new item and removing the oldest one
 
-ssh "$server" mkdir "$download_dir/$id"
+  runhaskell update-feed.hs "$full_title" "$http_server/$link_uri" "$download_url" "$size" "$duration" "$performer" "$(date +'%a, %d %b %Y %H:%M:%S %z')" "$id at $http_server"  < old.xml > new.xml
 
-# copy file to server under new name
+  # make new directory on server
 
-ln "$full_name" "$full_title.mp3"
-$dry_run scp "$full_title.mp3" "$server:$download_dir/$id/"
-rm "$full_title.mp3"
+  $dry_run ssh "$server" mkdir "$download_dir/$id"
 
-# upload new feed.xml to server
+  # copy file to server under new name
 
-$dry_run scp new.xml "$server:$feed_path"
+  ln "$full_name" "$full_title.mp3"
+  $dry_run scp "$full_title.mp3" "$server:$download_dir/$id/"
+  rm "$full_title.mp3"
 
-# log in to wordpress add entry to series engine
+  # upload new feed.xml to server
 
-# todo
+  $dry_run scp new.xml "$server:$feed_path"
+}
 
+function encode-url-param-array {
+  for x in $2; do echo -n "&$1=$x"; done
+}
 
+function update-series {
+  # log in to wordpress add entry to series engine
+
+  for x in series_list speaker wordpress_user wordpress_password location; do
+    if [[ -z "${!x}" ]]; then
+      >&2 echo "$x must be set in environment"
+      exit 1
+    fi
+  done
+
+  agent='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36'
+
+  encoding='Accept-Encoding: gzip,deflate'
+
+  $dry_run curl -A "$agent" -D cookie.txt -H "Referer: $http_server/wp-login.php?redirect_to=$(url-encode $http_server)%2Fwp-admin%2F&reauth=1" -H 'Cookie: wordpress_test_cookie=WP+Cookie+check' -H "$encoding" -d "log=$(url-encode $wordpress_user)&pwd=$(url-encode $wordpress_password)&rememberme=forever&testcookie=1" "$http_server/wp-login.php" >/dev/null
+
+  series_title="$title - $performer - $location"
+
+  series_encoded="$(encode-url-param-array series%5B%5D "$series_list")"
+  topics_encoded="$(encode-url-param-array topics%5B%5D "$topics_list")"
+
+  $dry_run curl -A "$agent" -L -D foo.txt -b cookie.txt -H "$encoding" -H "Referer: http://www.denverchurch.org/wp-admin/admin.php?page=seriesengine_plugin/seriesengine_plugin.php&enmse_action=new" -d "message_title=$(url-encode "$series_title")&message_speaker=$speaker&speaker_first_name=First&speaker_last_name=Last&message_date=$year-$month-$day&message_description=&message_audio_url=$(url-encode "$download_url")&message_embed_code=$series_encoded&topic_name=$topics_encoded&message_alternate_date=&message_thumbnail=&message_alternate_toggle=No&message_alternate_label=&message_alternate_embed=&message_length=&message_audio_url_dummy=$(url-encode "$download_url")&message_audio_file_size=&message_video_length=&message_video_url=&message_video_file_size=&file_name=&file_url=&file_username=$wordpress_user&Submit=Add+New+Message" "$http_server/wp-admin/admin.php?page=seriesengine_plugin/seriesengine_plugin.php&enmse_action=new" >/dev/null
+}
