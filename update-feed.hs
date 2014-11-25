@@ -3,7 +3,7 @@
 -- contents of the new item are specified as arguments.
 
 import Text.XML.HXT.Core
- 
+
 import System.Environment
 import System.IO
 import System.Exit
@@ -22,12 +22,12 @@ makeItem argv = selem "item"
   , selem "dc:creator" [ txt "admin" ]
   , mkelem "guid" [ sattr "isPermaLink" "false" ] [ txt (argv!!7) ] ]
 
--- place all non-item elements at the top of the child list, prepend a
--- new item, and remove the last existing item:
+-- place all non-item elements at the top of the child list and
+-- prepend a new item
 processChannel argv = replaceChildren
   ((getChildren >>> isElem >>> (neg (hasName "item")))
    <+> (makeItem argv)
-   <+> ((getChildren >>> isElem >>> hasName "item") >>. init) )
+   <+> (getChildren >>> isElem >>> hasName "item"))
 
 -- find and transform any channel elements found, leaving everything
 -- else unchanged:
