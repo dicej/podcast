@@ -1,0 +1,451 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		98EC79EE1A4F176A00F4FD41 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EC79ED1A4F176A00F4FD41 /* AppDelegate.m */; };
+		98EC79F01A4F176A00F4FD41 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EC79EF1A4F176A00F4FD41 /* main.m */; };
+		98EC79F21A4F176A00F4FD41 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98EC79F11A4F176A00F4FD41 /* Images.xcassets */; };
+		98EC79F51A4F176A00F4FD41 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98EC79F31A4F176A00F4FD41 /* MainMenu.xib */; };
+		98EC7A011A4F176A00F4FD41 /* PodcastinatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EC7A001A4F176A00F4FD41 /* PodcastinatorTests.m */; };
+		98EC7A0B1A4F233000F4FD41 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98EC7A0A1A4F233000F4FD41 /* WebKit.framework */; };
+		98EC7A0D1A4F248900F4FD41 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 98EC7A0C1A4F248900F4FD41 /* index.html */; };
+		98EC7A0F1A4F3F6900F4FD41 /* confirm.html in Resources */ = {isa = PBXBuildFile; fileRef = 98EC7A0E1A4F3F6900F4FD41 /* confirm.html */; };
+		98EC7A111A4F571B00F4FD41 /* config.js in Resources */ = {isa = PBXBuildFile; fileRef = 98EC7A101A4F571B00F4FD41 /* config.js */; };
+		98EC7A131A4F632800F4FD41 /* progress.gif in Resources */ = {isa = PBXBuildFile; fileRef = 98EC7A121A4F632800F4FD41 /* progress.gif */; };
+		98EC7A151A4F635700F4FD41 /* progress.html in Resources */ = {isa = PBXBuildFile; fileRef = 98EC7A141A4F635700F4FD41 /* progress.html */; };
+		98EC7A171A4F699000F4FD41 /* success.html in Resources */ = {isa = PBXBuildFile; fileRef = 98EC7A161A4F699000F4FD41 /* success.html */; };
+		98EC7A191A4F69CD00F4FD41 /* failure.html in Resources */ = {isa = PBXBuildFile; fileRef = 98EC7A181A4F69CD00F4FD41 /* failure.html */; };
+		98EC7A1B1A4F6C3200F4FD41 /* publish.sh in Resources */ = {isa = PBXBuildFile; fileRef = 98EC7A1A1A4F6C3200F4FD41 /* publish.sh */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		98EC79FB1A4F176A00F4FD41 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 98EC79DF1A4F176A00F4FD41 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 98EC79E61A4F176A00F4FD41;
+			remoteInfo = Podcastinator;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		98EC79E71A4F176A00F4FD41 /* Podcastinator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Podcastinator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		98EC79EB1A4F176A00F4FD41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98EC79EC1A4F176A00F4FD41 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		98EC79ED1A4F176A00F4FD41 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		98EC79EF1A4F176A00F4FD41 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		98EC79F11A4F176A00F4FD41 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		98EC79F41A4F176A00F4FD41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		98EC79FA1A4F176A00F4FD41 /* PodcastinatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PodcastinatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		98EC79FF1A4F176A00F4FD41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98EC7A001A4F176A00F4FD41 /* PodcastinatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PodcastinatorTests.m; sourceTree = "<group>"; };
+		98EC7A0A1A4F233000F4FD41 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		98EC7A0C1A4F248900F4FD41 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; tabWidth = 2; };
+		98EC7A0E1A4F3F6900F4FD41 /* confirm.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = confirm.html; sourceTree = "<group>"; };
+		98EC7A101A4F571B00F4FD41 /* config.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = config.js; sourceTree = "<group>"; };
+		98EC7A121A4F632800F4FD41 /* progress.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = progress.gif; path = progress.gif; sourceTree = "<group>"; };
+		98EC7A141A4F635700F4FD41 /* progress.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = progress.html; sourceTree = "<group>"; };
+		98EC7A161A4F699000F4FD41 /* success.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = success.html; sourceTree = "<group>"; };
+		98EC7A181A4F69CD00F4FD41 /* failure.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = failure.html; sourceTree = "<group>"; };
+		98EC7A1A1A4F6C3200F4FD41 /* publish.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = publish.sh; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		98EC79E41A4F176A00F4FD41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98EC7A0B1A4F233000F4FD41 /* WebKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98EC79F71A4F176A00F4FD41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		98EC79DE1A4F176A00F4FD41 = {
+			isa = PBXGroup;
+			children = (
+				98EC7A0A1A4F233000F4FD41 /* WebKit.framework */,
+				98EC79E91A4F176A00F4FD41 /* Podcastinator */,
+				98EC79FD1A4F176A00F4FD41 /* PodcastinatorTests */,
+				98EC79E81A4F176A00F4FD41 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		98EC79E81A4F176A00F4FD41 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				98EC79E71A4F176A00F4FD41 /* Podcastinator.app */,
+				98EC79FA1A4F176A00F4FD41 /* PodcastinatorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		98EC79E91A4F176A00F4FD41 /* Podcastinator */ = {
+			isa = PBXGroup;
+			children = (
+				98EC79EC1A4F176A00F4FD41 /* AppDelegate.h */,
+				98EC79ED1A4F176A00F4FD41 /* AppDelegate.m */,
+				98EC7A1A1A4F6C3200F4FD41 /* publish.sh */,
+				98EC7A0C1A4F248900F4FD41 /* index.html */,
+				98EC7A141A4F635700F4FD41 /* progress.html */,
+				98EC7A161A4F699000F4FD41 /* success.html */,
+				98EC7A181A4F69CD00F4FD41 /* failure.html */,
+				98EC7A121A4F632800F4FD41 /* progress.gif */,
+				98EC7A0E1A4F3F6900F4FD41 /* confirm.html */,
+				98EC7A101A4F571B00F4FD41 /* config.js */,
+				98EC79F11A4F176A00F4FD41 /* Images.xcassets */,
+				98EC79F31A4F176A00F4FD41 /* MainMenu.xib */,
+				98EC79EA1A4F176A00F4FD41 /* Supporting Files */,
+			);
+			path = Podcastinator;
+			sourceTree = "<group>";
+		};
+		98EC79EA1A4F176A00F4FD41 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				98EC79EB1A4F176A00F4FD41 /* Info.plist */,
+				98EC79EF1A4F176A00F4FD41 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		98EC79FD1A4F176A00F4FD41 /* PodcastinatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				98EC7A001A4F176A00F4FD41 /* PodcastinatorTests.m */,
+				98EC79FE1A4F176A00F4FD41 /* Supporting Files */,
+			);
+			path = PodcastinatorTests;
+			sourceTree = "<group>";
+		};
+		98EC79FE1A4F176A00F4FD41 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				98EC79FF1A4F176A00F4FD41 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		98EC79E61A4F176A00F4FD41 /* Podcastinator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 98EC7A041A4F176A00F4FD41 /* Build configuration list for PBXNativeTarget "Podcastinator" */;
+			buildPhases = (
+				98EC79E31A4F176A00F4FD41 /* Sources */,
+				98EC79E41A4F176A00F4FD41 /* Frameworks */,
+				98EC79E51A4F176A00F4FD41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Podcastinator;
+			productName = Podcastinator;
+			productReference = 98EC79E71A4F176A00F4FD41 /* Podcastinator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		98EC79F91A4F176A00F4FD41 /* PodcastinatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 98EC7A071A4F176A00F4FD41 /* Build configuration list for PBXNativeTarget "PodcastinatorTests" */;
+			buildPhases = (
+				98EC79F61A4F176A00F4FD41 /* Sources */,
+				98EC79F71A4F176A00F4FD41 /* Frameworks */,
+				98EC79F81A4F176A00F4FD41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				98EC79FC1A4F176A00F4FD41 /* PBXTargetDependency */,
+			);
+			name = PodcastinatorTests;
+			productName = PodcastinatorTests;
+			productReference = 98EC79FA1A4F176A00F4FD41 /* PodcastinatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		98EC79DF1A4F176A00F4FD41 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Joel Dice";
+				TargetAttributes = {
+					98EC79E61A4F176A00F4FD41 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					98EC79F91A4F176A00F4FD41 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 98EC79E61A4F176A00F4FD41;
+					};
+				};
+			};
+			buildConfigurationList = 98EC79E21A4F176A00F4FD41 /* Build configuration list for PBXProject "Podcastinator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 98EC79DE1A4F176A00F4FD41;
+			productRefGroup = 98EC79E81A4F176A00F4FD41 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				98EC79E61A4F176A00F4FD41 /* Podcastinator */,
+				98EC79F91A4F176A00F4FD41 /* PodcastinatorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		98EC79E51A4F176A00F4FD41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98EC7A171A4F699000F4FD41 /* success.html in Resources */,
+				98EC7A191A4F69CD00F4FD41 /* failure.html in Resources */,
+				98EC7A0D1A4F248900F4FD41 /* index.html in Resources */,
+				98EC7A0F1A4F3F6900F4FD41 /* confirm.html in Resources */,
+				98EC7A1B1A4F6C3200F4FD41 /* publish.sh in Resources */,
+				98EC79F21A4F176A00F4FD41 /* Images.xcassets in Resources */,
+				98EC7A131A4F632800F4FD41 /* progress.gif in Resources */,
+				98EC7A111A4F571B00F4FD41 /* config.js in Resources */,
+				98EC7A151A4F635700F4FD41 /* progress.html in Resources */,
+				98EC79F51A4F176A00F4FD41 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98EC79F81A4F176A00F4FD41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		98EC79E31A4F176A00F4FD41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98EC79F01A4F176A00F4FD41 /* main.m in Sources */,
+				98EC79EE1A4F176A00F4FD41 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98EC79F61A4F176A00F4FD41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98EC7A011A4F176A00F4FD41 /* PodcastinatorTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		98EC79FC1A4F176A00F4FD41 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 98EC79E61A4F176A00F4FD41 /* Podcastinator */;
+			targetProxy = 98EC79FB1A4F176A00F4FD41 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		98EC79F31A4F176A00F4FD41 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				98EC79F41A4F176A00F4FD41 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		98EC7A021A4F176A00F4FD41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		98EC7A031A4F176A00F4FD41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		98EC7A051A4F176A00F4FD41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Podcastinator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		98EC7A061A4F176A00F4FD41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Podcastinator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		98EC7A081A4F176A00F4FD41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PodcastinatorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Podcastinator.app/Contents/MacOS/Podcastinator";
+			};
+			name = Debug;
+		};
+		98EC7A091A4F176A00F4FD41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PodcastinatorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Podcastinator.app/Contents/MacOS/Podcastinator";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		98EC79E21A4F176A00F4FD41 /* Build configuration list for PBXProject "Podcastinator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98EC7A021A4F176A00F4FD41 /* Debug */,
+				98EC7A031A4F176A00F4FD41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		98EC7A041A4F176A00F4FD41 /* Build configuration list for PBXNativeTarget "Podcastinator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98EC7A051A4F176A00F4FD41 /* Debug */,
+				98EC7A061A4F176A00F4FD41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		98EC7A071A4F176A00F4FD41 /* Build configuration list for PBXNativeTarget "PodcastinatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98EC7A081A4F176A00F4FD41 /* Debug */,
+				98EC7A091A4F176A00F4FD41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 98EC79DF1A4F176A00F4FD41 /* Project object */;
+}

@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <script src="config.js"></script>
+        <script>
+            window.onload = function() {
+                document.getElementById('email').href = 'mailto:' + config.email;
+                document.getElementById('email').innerText = config.email;
+            }
+        </script>
+    </head>
+    <body>
+        <p>Oops! Something went wrong.  Please contact <a id="email" href="#">?</a> for help.</p>
+    </body>
+</html>

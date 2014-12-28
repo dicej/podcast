@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <script src="config.js"></script>
+    <script>
+      var today = function() {
+        var local = new Date();
+        local.setMinutes(local.getMinutes() - local.getTimezoneOffset());
+        return local.toJSON().slice(0, 10);
+      }
+    
+    var empty = function(x) {
+      return !x || x == "";
+    }
+    
+    var validate = function() {
+      var form = document.forms.form;
+      if (empty(form.title.value)) {
+        alert("Please specify the title");
+        return false;
+      } else if (empty(form.speaker.options[form.speaker.selectedIndex].value)) {
+        alert("Please specify the speaker");
+        return false;
+      } else if (empty(form.service.options[form.service.selectedIndex].value)) {
+        alert("Please specify the service");
+        return false;
+      } else if (empty(form.date.value)) {
+        alert("Please specify the date");
+        return false;
+      } else if (form.file.files.length == 0) {
+        alert("Please specify the MP3 file");
+        return false;
+      } else {
+        return true;
+      }
+    }
+    
+    var addOptions = function(select, array) {
+      for (var i = 0; i < array.length; ++i) {
+        var option = document.createElement('option');
+        option.text = array[i];
+        option.value = array[i];
+        select.options[i] = option;
+      }
+    };
+    
+    window.onload = function() {
+      document.forms.form.date.value = today();
+      
+      document.getElementById('email').href = 'mailto:' + config.email;
+      document.getElementById('email').innerText = config.email;
+      
+      addOptions(document.forms.form.speaker, config.speakers);
+      addOptions(document.forms.form.service, config.services);
+      addOptions(document.forms.form.location, config.locations);
+    }
+    </script>
+  </head>
+  <body>
+    <p>Problems?  Please contact <a id="email" href="#">?</a> for help.</p>
+    <form name="form" action="confirm.html" onsubmit="return validate()">
+      <table>
+        <tr><td>Title:</td><td><input type="text" name="title"/></td></tr>
+        <tr><td>Speaker:</td><td><select name="speaker"></select></td></tr>
+        <tr><td>Service:</td><td><select name="service"></select></td></tr>
+        <tr><td>Location:</td><td><select name="location"></select></td></tr>
+        <tr><td>Date:</td><td><input type="date" name="date"/></td></tr>
+        <tr><td>MP3:</td><td><input type="file" name="file" accept="audio/mpeg"/></td></tr>
+        <tr><td></td><td><input type="submit" value="Next"/></td></tr>
+      </table>
+    </form>
+    <p id="log"></p>
+  </body>
+</html>

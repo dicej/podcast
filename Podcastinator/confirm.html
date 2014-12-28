@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <script>
+            var decode = function(s) {
+                return decodeURIComponent(s.replace(/\+/g, '%20'));
+            };
+        
+        var getParameters = function () {
+            var s1 = location.search.substring(1, location.search.length).split('&'),
+            r = {}, s2, i;
+            for (i = 0; i < s1.length; i += 1) {
+                s2 = s1[i].split('=');
+                r[decode(s2[0]).toLowerCase()] = decode(s2[1]);
+            }
+            return r;
+        };
+        
+        var parameters = getParameters();
+        
+        var publish = function() {
+            window.publisher.publish(JSON.stringify(parameters));
+        };
+        
+        window.onload = function() {
+            for (name in parameters) {
+                document.getElementById(name).innerText = parameters[name];
+            }
+        };
+        </script>
+    </head>
+    <body>
+        <p>Is this correct?</p>
+        <table>
+            <tr><td>Title:</td><td id="title"></td></tr>
+            <tr><td>Speaker:</td><td id="speaker"></td></tr>
+            <tr><td>Service:</td><td id="service"></td></tr>
+            <tr><td>Location:</td><td id="location"></td></tr>
+            <tr><td>Date:</td><td id="date"></td></tr>
+            <tr><td>MP3:</td><td id="file"></td></tr>
+            <tr><td><button onclick="history.back()">Edit</button></td><td><button onclick="publish()">Publish</button></td></tr>
+        </table>
+    </body>
+</html>
