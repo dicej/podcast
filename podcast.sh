@@ -2,35 +2,21 @@
 
 set -e
 
-for x in server http_server album link_uri download_uri feed_path download_dir full_name; do
+for x in server http_server album link_uri download_uri feed_path download_dir file date time performer title; do
   if [[ -z "${!x}" ]]; then
     >&2 echo "$x must be set in environment"
     exit 1
   fi
 done
 
-# parse out the fields from the filename
+dateArray=(${date//-/ })
+year=${dateArray[0]}
+month=${dateArray[1]}
+day=${dateArray[2]}
 
-name="$(basename "$full_name")"
-
-format='\([^-]*\)-\([^-]*\)-\([^-]*\)-\([^:]*\):\([^_]*\)_\([^_]*\)_\([^.]*\)\.mp3'
-
-function get {
-  echo "$name" | sed "s/$format/\\$1/"
-}
-
-year="$(get 1)"
-month="$(get 2)"
-day="$(get 3)"
-hour="$(get 4)"
-minute="$(get 5)"
-performer="$(get 6)"
-title="$(get 7)"
-
-if [ "$title" == "$name" ]; then
-  >&2 echo "invalid format: $name"
-  exit 1
-fi
+timeArray=(${time//:/ })
+hour=${timeArray[0]}
+minute=${timeArray[1]}
 
 # generate the full title, e.g. "September 14 - The Title"
 
@@ -44,17 +30,41 @@ function month-day {
 
 full_title="$(month-day "$year-$month-$day $hour:$minute") - $title"
 
+# generate the podcast title, e.g.
+# "September 14th, 2014 - The Title - Joe Performer"
+
+function month-day-year {
+  if [ "$(uname)" == "Linux" ]; then
+    date -d "$1" '+%B %-d, %Y'
+  else # BSD date, we assume
+    date -j -f '%Y-%m-%d %H:%M' "$1" '+%B %-d, %Y'
+  fi
+}
+
+function pretty-day {
+  echo "$1" \
+    | sed "s/11,/11th,/" \
+    | sed "s/12,/12th,/" \
+    | sed "s/13,/13th,/" \
+    | sed "s/1,/1st,/" \
+    | sed "s/2,/2nd,/" \
+    | sed "s/3,/3rd,/" \
+    | sed "s/\([0-9]\),/\\1th,/"
+}
+
+podcast_title="$(pretty-day "$(month-day-year "$year-$month-$day $hour:$minute")") - $title - $performer"
+
 # determine the duration in minutes and seconds
 
-duration="$(mp3info -p %m "$full_name"):$(printf %02d $(mp3info -p %s "$full_name"))"
+duration="$(mp3info -p %m "$file"):$(printf %02d $(mp3info -p %s "$file"))"
 
 # determine file size in bytes
 
-size=$(du -b "$full_name" | cut -f 1)
+size=$(du -b "$file" | cut -f 1)
 
 # set id3 tags according to above fields
 
-id3v2 --TIT2 "$full_title" --TALB "$album" --TCOM "$performer" --TPE1 "$performer" --TYER "$year" --TDAT "$day$month" --TIME "$hour$minute" "$full_name"
+id3v2 --TIT2 "$full_title" --TALB "$album" --TCOM "$performer" --TPE1 "$performer" --TYER "$year" --TDAT "$day$month" --TIME "$hour$minute" "$file"
 
 if [ -z "$id" ]; then
   # get next item identifier from server
@@ -76,7 +86,7 @@ function update-feed {
 
   # edit feed.xml, adding a new item and removing the oldest one
 
-  runhaskell update-feed.hs "$full_title" "$http_server/$link_uri" "$download_url" "$size" "$duration" "$performer" "$(date +'%a, %d %b %Y %H:%M:%S %z')" "$id at $http_server"  < old.xml > new.xml
+  runhaskell update-feed.hs "$podcast_title" "$http_server/$link_uri" "$download_url" "$size" "$duration" "$performer" "$(date +'%a, %d %b %Y %H:%M:%S %z')" "$id at $http_server"  < old.xml > new.xml
 
   # make new directory on server
 
@@ -84,7 +94,7 @@ function update-feed {
 
   # copy file to server under new name
 
-  ln "$full_name" "$full_title.mp3"
+  ln "$file" "$full_title.mp3"
   $dry_run scp "$full_title.mp3" "$server:$download_dir/$id/"
   rm "$full_title.mp3"
 
