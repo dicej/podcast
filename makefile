@@ -7,3 +7,11 @@ build: xcode $(files)
 .PHONY: xcode
 xcode:
 	xcodebuild build
+
+.PHONY: run
+run: build
+	./build/Release/Podcastinator.app/Contents/MacOS/Podcastinator
+
+.PHONY: clean
+clean:
+	rm -rf build

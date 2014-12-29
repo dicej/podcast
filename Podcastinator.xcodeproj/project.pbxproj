@@ -15,12 +15,11 @@
 		98EC7A0B1A4F233000F4FD41 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98EC7A0A1A4F233000F4FD41 /* WebKit.framework */; };
 		98EC7A0D1A4F248900F4FD41 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 98EC7A0C1A4F248900F4FD41 /* index.html */; };
 		98EC7A0F1A4F3F6900F4FD41 /* confirm.html in Resources */ = {isa = PBXBuildFile; fileRef = 98EC7A0E1A4F3F6900F4FD41 /* confirm.html */; };
-		98EC7A111A4F571B00F4FD41 /* config.js in Resources */ = {isa = PBXBuildFile; fileRef = 98EC7A101A4F571B00F4FD41 /* config.js */; };
 		98EC7A131A4F632800F4FD41 /* progress.gif in Resources */ = {isa = PBXBuildFile; fileRef = 98EC7A121A4F632800F4FD41 /* progress.gif */; };
 		98EC7A151A4F635700F4FD41 /* progress.html in Resources */ = {isa = PBXBuildFile; fileRef = 98EC7A141A4F635700F4FD41 /* progress.html */; };
 		98EC7A171A4F699000F4FD41 /* success.html in Resources */ = {isa = PBXBuildFile; fileRef = 98EC7A161A4F699000F4FD41 /* success.html */; };
 		98EC7A191A4F69CD00F4FD41 /* failure.html in Resources */ = {isa = PBXBuildFile; fileRef = 98EC7A181A4F69CD00F4FD41 /* failure.html */; };
-		98EC7A1B1A4F6C3200F4FD41 /* publish.sh in Resources */ = {isa = PBXBuildFile; fileRef = 98EC7A1A1A4F6C3200F4FD41 /* publish.sh */; };
+		98EC7A751A50FABC00F4FD41 /* sha1.js in Resources */ = {isa = PBXBuildFile; fileRef = 98EC7A741A50FABC00F4FD41 /* sha1.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,12 +46,11 @@
 		98EC7A0A1A4F233000F4FD41 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		98EC7A0C1A4F248900F4FD41 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; tabWidth = 2; };
 		98EC7A0E1A4F3F6900F4FD41 /* confirm.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = confirm.html; sourceTree = "<group>"; };
-		98EC7A101A4F571B00F4FD41 /* config.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = config.js; sourceTree = "<group>"; };
-		98EC7A121A4F632800F4FD41 /* progress.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = progress.gif; path = progress.gif; sourceTree = "<group>"; };
+		98EC7A121A4F632800F4FD41 /* progress.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = progress.gif; sourceTree = "<group>"; };
 		98EC7A141A4F635700F4FD41 /* progress.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = progress.html; sourceTree = "<group>"; };
 		98EC7A161A4F699000F4FD41 /* success.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = success.html; sourceTree = "<group>"; };
 		98EC7A181A4F69CD00F4FD41 /* failure.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = failure.html; sourceTree = "<group>"; };
-		98EC7A1A1A4F6C3200F4FD41 /* publish.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = publish.sh; sourceTree = "<group>"; };
+		98EC7A741A50FABC00F4FD41 /* sha1.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sha1.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +75,7 @@
 		98EC79DE1A4F176A00F4FD41 = {
 			isa = PBXGroup;
 			children = (
+				98EC7A741A50FABC00F4FD41 /* sha1.js */,
 				98EC7A0A1A4F233000F4FD41 /* WebKit.framework */,
 				98EC79E91A4F176A00F4FD41 /* Podcastinator */,
 				98EC79FD1A4F176A00F4FD41 /* PodcastinatorTests */,
@@ -98,14 +97,12 @@
 			children = (
 				98EC79EC1A4F176A00F4FD41 /* AppDelegate.h */,
 				98EC79ED1A4F176A00F4FD41 /* AppDelegate.m */,
-				98EC7A1A1A4F6C3200F4FD41 /* publish.sh */,
 				98EC7A0C1A4F248900F4FD41 /* index.html */,
 				98EC7A141A4F635700F4FD41 /* progress.html */,
 				98EC7A161A4F699000F4FD41 /* success.html */,
 				98EC7A181A4F69CD00F4FD41 /* failure.html */,
 				98EC7A121A4F632800F4FD41 /* progress.gif */,
 				98EC7A0E1A4F3F6900F4FD41 /* confirm.html */,
-				98EC7A101A4F571B00F4FD41 /* config.js */,
 				98EC79F11A4F176A00F4FD41 /* Images.xcassets */,
 				98EC79F31A4F176A00F4FD41 /* MainMenu.xib */,
 				98EC79EA1A4F176A00F4FD41 /* Supporting Files */,
@@ -219,14 +216,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98EC7A751A50FABC00F4FD41 /* sha1.js in Resources */,
 				98EC7A171A4F699000F4FD41 /* success.html in Resources */,
 				98EC7A191A4F69CD00F4FD41 /* failure.html in Resources */,
 				98EC7A0D1A4F248900F4FD41 /* index.html in Resources */,
 				98EC7A0F1A4F3F6900F4FD41 /* confirm.html in Resources */,
-				98EC7A1B1A4F6C3200F4FD41 /* publish.sh in Resources */,
 				98EC79F21A4F176A00F4FD41 /* Images.xcassets in Resources */,
 				98EC7A131A4F632800F4FD41 /* progress.gif in Resources */,
-				98EC7A111A4F571B00F4FD41 /* config.js in Resources */,
 				98EC7A151A4F635700F4FD41 /* progress.html in Resources */,
 				98EC79F51A4F176A00F4FD41 /* MainMenu.xib in Resources */,
 			);
@@ -436,6 +432,7 @@
 				98EC7A061A4F176A00F4FD41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		98EC7A071A4F176A00F4FD41 /* Build configuration list for PBXNativeTarget "PodcastinatorTests" */ = {
 			isa = XCConfigurationList;
@@ -444,6 +441,7 @@
 				98EC7A091A4F176A00F4FD41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -24,24 +24,28 @@
 
 - (void)publish:(NSString*)parameters {
     NSDictionary* dictionary = [NSJSONSerialization JSONObjectWithData:[parameters dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
-    NSLog(@"publish %@ %@", dictionary, self.files);
+    //NSLog(@"publish %@ %@", dictionary, self.files);
     
     [self.webView.mainFrame loadRequest:
      [NSURLRequest requestWithURL:
       [[NSBundle mainBundle] URLForResource: @"progress" withExtension:@"html"]]];
     
     NSString* script = [[[NSBundle mainBundle] URLForResource: @"publish" withExtension:@"sh"] path];
-    self.task = [NSTask launchedTaskWithLaunchPath: @"/bin/bash"
-                                         arguments: @[ script,
-                                                       [self.files objectAtIndex: 0],
-                                                       [dictionary objectForKey: @"title"],
-                                                       [dictionary objectForKey: @"speaker"],
-                                                       [dictionary objectForKey: @"service"],
-                                                       [dictionary objectForKey: @"location"],
-                                                       [dictionary objectForKey: @"date"],
-                                                       [dictionary objectForKey: @"password"]]];
+    self.task = [[NSTask alloc] init];
+    [self.task setLaunchPath: @"/bin/bash"];
+    [self.task setCurrentDirectoryPath: [script stringByDeletingLastPathComponent]];
+    [self.task setArguments: @[ script,
+				[self.files objectAtIndex: 0],
+				[dictionary objectForKey: @"title"],
+				[dictionary objectForKey: @"speaker"],
+				[dictionary objectForKey: @"service"],
+				[dictionary objectForKey: @"location"],
+				[dictionary objectForKey: @"date"],
+				[dictionary objectForKey: @"password"]]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(taskComplete:)  name:NSTaskDidTerminateNotification object:self.task];
+    
+    [self.task launch];
 }
 
 - (void)taskComplete:(NSNotification*) notification
@@ -128,6 +132,10 @@ didFinishLoadingFromDataSource:(WebDataSource *)dataSource
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
+}
+
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
+  return YES;
 }
 
 @end

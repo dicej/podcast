@@ -1,2 +1,7 @@
 *~
 build
+.*
+*.gpg
+id_rsa.pub
+xcuserdata
+project.xcworkspace

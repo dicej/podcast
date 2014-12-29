@@ -60,7 +60,15 @@ duration="$(mp3info -p %m "$file"):$(printf %02d $(mp3info -p %s "$file"))"
 
 # determine file size in bytes
 
-size=$(du -b "$file" | cut -f 1)
+function file-size {
+  if [ "$(uname)" == "Linux" ]; then
+    du -b "$1" | cut -f 1
+  else # BSD, we assume
+    stat -f%z "$1"
+  fi
+}
+
+size="$(file-size "$file")"
 
 # set id3 tags according to above fields
 
@@ -68,7 +76,7 @@ id3v2 --TIT2 "$full_title" --TALB "$album" --TCOM "$performer" --TPE1 "$performe
 
 if [ -z "$id" ]; then
   # get next item identifier from server
-  let id="$(ssh "$server" ls "$download_dir" | sort -n | tail -n 1) + 1"
+  let id="$(do-ssh "$server" ls "$download_dir" | sort -n | tail -n 1) + 1"
 fi
 
 # generate download url
@@ -82,7 +90,7 @@ download_url="$http_server/$download_uri/$id/$(url-encode "$full_title").mp3"
 function update-feed {
   # download feed.xml from server
 
-  scp "$server:$feed_path" old.xml
+  do-scp "$server:$feed_path" old.xml
 
   # edit feed.xml, adding a new item and removing the oldest one
 
@@ -90,17 +98,17 @@ function update-feed {
 
   # make new directory on server
 
-  $dry_run ssh "$server" mkdir "$download_dir/$id"
+  $dry_run do-ssh "$server" mkdir "$download_dir/$id"
 
   # copy file to server under new name
 
   ln "$file" "$full_title.mp3"
-  $dry_run scp "$full_title.mp3" "$server:$download_dir/$id/"
+  $dry_run do-scp "$full_title.mp3" "$server:$download_dir/$id/"
   rm "$full_title.mp3"
 
   # upload new feed.xml to server
 
-  $dry_run scp new.xml "$server:$feed_path"
+  $dry_run do-scp new.xml "$server:$feed_path"
 }
 
 function encode-url-param-array {
