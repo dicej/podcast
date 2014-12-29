@@ -23,7 +23,10 @@
         
         window.onload = function() {
             for (name in parameters) {
-                document.getElementById(name).innerText = parameters[name];
+	        var element = document.getElementById(name);
+                if (element) {
+	            element.innerText = parameters[name];
+                }
             }
         };
         </script>

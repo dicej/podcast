@@ -38,7 +38,8 @@
                                                        [dictionary objectForKey: @"speaker"],
                                                        [dictionary objectForKey: @"service"],
                                                        [dictionary objectForKey: @"location"],
-                                                       [dictionary objectForKey: @"date"]]];
+                                                       [dictionary objectForKey: @"date"],
+                                                       [dictionary objectForKey: @"password"]]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(taskComplete:)  name:NSTaskDidTerminateNotification object:self.task];
 }
