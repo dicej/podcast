@@ -1,4 +1,4 @@
-files = update-feed.hs podcast.sh
+files = update-feed.hs podcast.sh id_rsa.gpg wordpress.gpg config.js publish.sh
 
 .PHONY: build
 build: xcode $(files)
