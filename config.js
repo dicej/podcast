@@ -1,6 +1,7 @@
 var config = {
     email: 'joel.dice@gmail.com',
     speakers: [ '',
+		'Brian Gray',
 		'Carl Medearis',
 		'Dave Neuhausel',
 		'Dave Terpstra',
@@ -11,7 +12,8 @@ var config = {
 		'Kathy Escobar',
 		'Landon Lynch',
 		'Michael Hidalgo',
-		'Nick Elio' ],
+		'Nick Elio',
+		'Ryan Taylor'],
     services: [ '', '9:00', '11:00' ],
     locations: [ 'Wash Park', 'Uptown' ]
 };

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export PATH=$PATH:/usr/local/bin
+
 file="$1"
 title="$2"
 performer="$3"
@@ -39,6 +41,8 @@ function speakers {
 	"Jon Gettings") echo 9;;
 	"Dave Neuhausel") echo 10;;
 	"Nick Elio") echo 11;;
+	"Ryan Taylor") echo 12;;
+	"Brian Gray") echo 13;;
     esac
 }
 
@@ -55,7 +59,7 @@ wordpress_user=dccmain1
 wordpress_password="$(gpg --batch --passphrase "$passphrase" < wordpress.gpg)"
 ssh_key=$(mktemp /tmp/temp.XXXXXX)
 speaker="$(speakers "$performer")"
-dry_run=echo
+#dry_run=echo
 
 trap "rm -f $ssh_key" EXIT
 gpg --batch --passphrase "$passphrase" < id_rsa.gpg > $ssh_key
