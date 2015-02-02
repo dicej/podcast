@@ -12,38 +12,38 @@ passphrase="$7"
 
 # match the series IDs in the WordPress database:
 function series {
-    case "$1" in
-	"Acts") echo 2;;
-	"Uptown") echo 4;;
-	"Wash Park") echo 5;;
-	"Sunday Teaching") echo 6;;
-    esac
+  case "$1" in
+    "Acts") echo 2;;
+    "Uptown") echo 4;;
+    "Wash Park") echo 5;;
+    "Sunday Teaching") echo 6;;
+  esac
 }
 
 # match the topic IDs in the WordPress database:
 function topics {
-    case "$1" in
-	"Acts") echo 8;;
-    esac
+  case "$1" in
+    "Acts") echo 8;;
+  esac
 }
 
 # match the speaker IDs in the WordPress database:
 function speakers {
-    case "$1" in
-	"Eric Murrell") echo 1;;
-	"Michael Hidalgo") echo 2;;
-	"Landon Lynch") echo 3;;
-	"Carl Medearis") echo 4;;
-	"Kathy Escobar") echo 5;;
-	"Fran Blomberg") echo 6;;
-	"Hugh Halter") echo 7;;
-	"Dave Terpstra") echo 8;;
-	"Jon Gettings") echo 9;;
-	"Dave Neuhausel") echo 10;;
-	"Nick Elio") echo 11;;
-	"Ryan Taylor") echo 12;;
-	"Brian Gray") echo 13;;
-    esac
+  case "$1" in
+    "Eric Murrell") echo 1;;
+    "Michael Hidalgo") echo 2;;
+    "Landon Lynch") echo 3;;
+    "Carl Medearis") echo 4;;
+    "Kathy Escobar") echo 5;;
+    "Fran Blomberg") echo 6;;
+    "Hugh Halter") echo 7;;
+    "Dave Terpstra") echo 8;;
+    "Jon Gettings") echo 9;;
+    "Dave Neuhausel") echo 10;;
+    "Nick Elio") echo 11;;
+    "Ryan Taylor") echo 12;;
+    "Brian Gray") echo 13;;
+  esac
 }
 
 server=u40002018@denverchurch.org

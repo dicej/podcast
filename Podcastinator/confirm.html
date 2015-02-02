@@ -1,34 +1,34 @@
 <html>
     <head>
         <script>
-            var decode = function(s) {
-                return decodeURIComponent(s.replace(/\+/g, '%20'));
-            };
-        
-        var getParameters = function () {
+          var decode = function(s) {
+            return decodeURIComponent(s.replace(/\+/g, '%20').replace(/%92/g,'%27'));
+          };
+
+          var getParameters = function () {
             var s1 = location.search.substring(1, location.search.length).split('&'),
             r = {}, s2, i;
             for (i = 0; i < s1.length; i += 1) {
-                s2 = s1[i].split('=');
-                r[decode(s2[0]).toLowerCase()] = decode(s2[1]);
+              s2 = s1[i].split('=');
+              r[decode(s2[0]).toLowerCase()] = decode(s2[1]);
             }
             return r;
-        };
-        
-        var parameters = getParameters();
-        
-        var publish = function() {
+          };
+
+          var parameters = getParameters();
+
+          var publish = function() {
             window.publisher.publish(JSON.stringify(parameters));
-        };
-        
-        window.onload = function() {
+          };
+
+          window.onload = function() {
             for (name in parameters) {
-	        var element = document.getElementById(name);
-                if (element) {
-	            element.innerText = parameters[name];
-                }
+              var element = document.getElementById(name);
+              if (element) {
+                element.innerText = parameters[name];
+              }
             }
-        };
+          };
         </script>
     </head>
     <body>
