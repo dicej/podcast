@@ -43,6 +43,9 @@ function speakers {
     "Nick Elio") echo 11;;
     "Ryan Taylor") echo 12;;
     "Brian Gray") echo 13;;
+    "Amanda Pennington") echo 14;;
+    "Serve Global Forum") echo 15;;
+    "Scott Oppliger") echo 16;;
   esac
 }
 
