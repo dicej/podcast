@@ -11,13 +11,15 @@ var config = {
                 'Jon Gettings',
                 'Kathy Escobar',
                 'Landon Lynch',
+                'Leah Kostamo',
                 'Michael Hidalgo',
                 'Nick Elio',
+                'Paul Young',
                 'Ryan Taylor',
                 'Amanda Pennington',
                 'Serve Global Forum',
                 'Scott Oppliger'
               ],
     services: [ '', '9:00', '11:00' ],
-    locations: [ 'Wash Park', 'Uptown' ]
+    locations: [ 'Uptown', 'Wash Park' ]
 };

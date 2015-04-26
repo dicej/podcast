@@ -46,6 +46,8 @@ function speakers {
     "Amanda Pennington") echo 14;;
     "Serve Global Forum") echo 15;;
     "Scott Oppliger") echo 16;;
+    "Leah Kostamo") echo 17;;
+    "Paul Young") echo 18;;
   esac
 }
 
