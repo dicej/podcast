@@ -48,6 +48,7 @@ function speakers {
     "Scott Oppliger") echo 16;;
     "Leah Kostamo") echo 17;;
     "Paul Young") echo 18;;
+    "Guest Speaker") echo 20;;
   esac
 }
 
