@@ -45,15 +45,15 @@ Installing Dependencies
 
   (first, install Homebrew from http://brew.sh)
 
-  brew doctor
-  brew update
-  brew install mp3info id3v2 cabal-install ghc gpg
-  cabal update
-  cabal install cabal-install hxt
+    brew doctor
+    brew update
+    brew install mp3info id3v2 cabal-install ghc gpg
+    cabal update
+    cabal install cabal-install hxt
 
 
 Building and Installing
 -----------------------
 
-  make
-  cp -a build/Release/Podcastinator.app /Applications/
+    make
+    cp -a build/Release/Podcastinator.app /Applications/
