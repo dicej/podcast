@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# This script takes a filename, title, performer name, time, location,
+# date, and passphrase and publishes the file to denverchurch.org
+# according to the configuration listed below.
+
 export PATH=$PATH:/usr/local/bin
 
 file="$1"
@@ -80,5 +84,6 @@ function do-scp {
 
 source podcast.sh
 
+upload-file
 update-feed
 update-series

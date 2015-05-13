@@ -1,6 +1,6 @@
 -- This program takes a podcast feed XML file and outputs a modified
--- version with a new item prepended and the oldest item removed.  The
--- contents of the new item are specified as arguments.
+-- version with a new item prepended and any items older than a year
+-- removed.  The contents of the new item are specified as arguments.
 
 import Text.XML.HXT.Core
 

@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# This file, intended to be sourced from another script, receives its
+# configuration via environment variables, generates file names,
+# titles, recording duration, etc. according to certain conventions,
+# and provides functions for uploading the file, updating an RSS feed,
+# and publishing to Series Engine.  The enclosing script can then call
+# those functions in order to actually publish the recording.
+
 set -e
 
 for x in server http_server album link_uri download_uri feed_path download_dir file date time performer title; do
@@ -87,15 +94,7 @@ function url-encode {
 
 download_url="$http_server/$download_uri/$id/$(url-encode "$full_title").mp3"
 
-function update-feed {
-  # download feed.xml from server
-
-  do-scp "$server:$feed_path" old.xml
-
-  # edit feed.xml, adding a new item and removing the oldest one
-
-  runhaskell update-feed.hs "$podcast_title" "$http_server/$link_uri" "$download_url" "$size" "$duration" "$performer" "$(date +'%a, %d %b %Y %H:%M:%S %z')" "$id at $http_server"  < old.xml > new.xml
-
+function upload-file {
   # make new directory on server
 
   $dry_run do-ssh "$server" mkdir "$download_dir/$id"
@@ -105,6 +104,16 @@ function update-feed {
   ln "$file" "$full_title.mp3"
   $dry_run do-scp "$full_title.mp3" "$server:$download_dir/$id/"
   rm "$full_title.mp3"
+}
+
+function update-feed {
+  # download feed.xml from server
+
+  do-scp "$server:$feed_path" old.xml
+
+  # edit feed.xml, adding a new item and removing the oldest one
+
+  runhaskell update-feed.hs "$podcast_title" "$http_server/$link_uri" "$download_url" "$size" "$duration" "$performer" "$(date +'%a, %d %b %Y %H:%M:%S %z')" "$id at $http_server"  < old.xml > new.xml
 
   # upload new feed.xml to server
 
