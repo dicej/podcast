@@ -81,6 +81,10 @@ size="$(file-size "$file")"
 
 id3v2 --TIT2 "$full_title" --TALB "$album" --TCOM "$performer" --TPE1 "$performer" --TYER "$year" --TDAT "$day$month" --TIME "$hour$minute" "$file"
 
+# add image (todo: make this configurable)
+
+eyeD3 --add-image=teaching.png:FRONT_COVER "$file"
+
 if [ -z "$id" ]; then
   # get next item identifier from server
   let id="$(do-ssh "$server" ls "$download_dir" | sort -n | tail -n 1) + 1"
