@@ -53,6 +53,7 @@ function speakers {
     "Leah Kostamo") echo 17;;
     "Paul Young") echo 18;;
     "Guest Speaker") echo 20;;
+    "Amanda Lum") echo 21;;
   esac
 }
 

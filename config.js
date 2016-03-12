@@ -9,6 +9,7 @@ var config = {
                 'Michael Hidalgo',
                 'Nick Elio',
                 'Amanda Pennington',
+                'Amanda Lum',
                 'Scott Oppliger'
               ],
     services: [ '', '9:00', '11:00' ],
