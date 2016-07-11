@@ -76,11 +76,11 @@ trap "rm -f $ssh_key" EXIT
 gpg --batch --passphrase "$passphrase" < id_rsa.gpg > $ssh_key
 
 function do-ssh {
-  ssh -i $ssh_key "$@"
+  ssh -o StrictHostKeyChecking=no -i $ssh_key "$@"
 }
 
 function do-scp {
-  scp -i $ssh_key "$@"
+  scp -o StrictHostKeyChecking=no -i $ssh_key "$@"
 }
 
 source podcast.sh
