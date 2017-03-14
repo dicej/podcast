@@ -57,7 +57,7 @@ function speakers {
   esac
 }
 
-server=u40002018@denverchurch.org
+server=u40002018@home157689691.1and1-data.host
 http_server=http://www.denverchurch.org
 album="Denver Community Church"
 link_uri=teaching

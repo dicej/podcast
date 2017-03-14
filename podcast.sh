@@ -142,7 +142,7 @@ function update-series {
 
   encoding='Accept-Encoding: gzip,deflate'
 
-  $dry_run curl -A "$agent" -D cookie.txt -H "Referer: $http_server/wp-login.php?redirect_to=$(url-encode $http_server)%2Fwp-admin%2F&reauth=1" -H 'Cookie: wordpress_test_cookie=WP+Cookie+check' -H "$encoding" -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" -H "Accept-Language: en-US,en;q=0.8" -H "Origin: $http_server" -d "log=$(url-encode $wordpress_user)&pwd=$(url-encode $wordpress_password)&rememberme=forever&testcookie=1" "$http_server/wp-login.php"
+  $dry_run curl -A "$agent" -D cookie.txt -H "Referer: $http_server/wp-login.php?redirect_to=$(url-encode $http_server)%2Fwp-admin%2F&reauth=1" -H 'Cookie: wordpress_test_cookie=WP+Cookie+check' -H "$encoding" -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" -H "Accept-Language: en-US,en;q=0.8" -H "Origin: $http_server" -d "log=$(url-encode $wordpress_user)&pwd=$(url-encode "$wordpress_password")&rememberme=forever&testcookie=1" "$http_server/wp-login.php"
 
   series_title="$title - $performer - $location"
 
