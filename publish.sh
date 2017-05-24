@@ -54,6 +54,7 @@ function speakers {
     "Paul Young") echo 18;;
     "Guest Speaker") echo 20;;
     "Amanda Lum") echo 21;;
+    "Bekah Stewart") echo 23;;
   esac
 }
 

@@ -10,7 +10,8 @@ var config = {
                 'Nick Elio',
                 'Amanda Pennington',
                 'Amanda Lum',
-                'Scott Oppliger'
+                'Scott Oppliger',
+                'Bekah Stewart'
               ],
     services: [ '', '9:00', '11:00' ],
     locations: [ 'Uptown', 'Wash Park' ]
