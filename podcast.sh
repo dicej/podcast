@@ -96,7 +96,13 @@ function url-encode {
   perl -MURI::Escape -e 'print uri_escape($ARGV[0]);' "$1"
 }
 
-download_url="$http_server/$download_uri/$id/$(url-encode "$full_title").mp3"
+function sanitize {
+  echo "$1" | sed 's/?//g'
+}
+
+full_title_sanitized="$(sanitize "$full_title")"
+
+download_url="$http_server/$download_uri/$id/$(url-encode "$full_title_sanitized").mp3"
 
 function upload-file {
   # make new directory on server
@@ -105,9 +111,9 @@ function upload-file {
 
   # copy file to server under new name
 
-  ln "$file" "$full_title.mp3"
-  $dry_run do-scp "$full_title.mp3" "$server:$download_dir/$id/"
-  rm "$full_title.mp3"
+  ln "$file" "$full_title_sanitized.mp3"
+  $dry_run do-scp "$full_title_sanitized.mp3" "$server:$download_dir/$id/"
+  rm "$full_title_sanitized.mp3"
 }
 
 function update-feed {
