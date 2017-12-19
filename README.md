@@ -47,7 +47,7 @@ Installing Dependencies
 
     brew doctor
     brew update
-    brew install mp3info id3v2 cabal-install ghc gpg python
+    brew install mp3info id3v2 cabal-install ghc gpg python libmagic
     pip2 install eyeD3
     cabal update
     cabal install cabal-install hxt
