@@ -61,12 +61,6 @@ function pretty-day {
 
 podcast_title="$(pretty-day "$(month-day-year "$year-$month-$day $hour:$minute")") - $title - $performer"
 
-# determine the duration in minutes and seconds
-
-duration="$(mp3info -p %m "$file"):$(printf %02d $(mp3info -p %s "$file"))"
-
-# determine file size in bytes
-
 function file-size {
   if [ "$(uname)" == "Linux" ]; then
     du -b "$1" | cut -f 1
@@ -74,16 +68,6 @@ function file-size {
     stat -f%z "$1"
   fi
 }
-
-size="$(file-size "$file")"
-
-# set id3 tags according to above fields
-
-id3v2 --TIT2 "$full_title" --TALB "$album" --TCOM "$performer" --TPE1 "$performer" --TYER "$year" --TDAT "$day$month" --TIME "$hour$minute" "$file"
-
-# add image (todo: make this configurable)
-
-eyeD3 --add-image=teaching.png:FRONT_COVER "$file"
 
 if [ -z "$id" ]; then
   # get next item identifier from server
@@ -105,6 +89,14 @@ full_title_sanitized="$(sanitize "$full_title")"
 download_url="$http_server/$download_uri/$id/$(url-encode "$full_title_sanitized").mp3"
 
 function upload-file {
+  # set id3 tags according to above fields
+
+  id3v2 --TIT2 "$full_title" --TALB "$album" --TCOM "$performer" --TPE1 "$performer" --TYER "$year" --TDAT "$day$month" --TIME "$hour$minute" "$file"
+
+  # add image (todo: make this configurable)
+
+  eyeD3 --add-image=teaching.png:FRONT_COVER "$file"
+
   # make new directory on server
 
   $dry_run do-ssh "$server" mkdir "$download_dir/$id"
@@ -117,6 +109,14 @@ function upload-file {
 }
 
 function update-feed {
+  # determine file size in bytes
+
+  size="$(file-size "$file")"
+
+  # determine the duration in minutes and seconds
+
+  duration="$(mp3info -p %m "$file"):$(printf %02d $(mp3info -p %s "$file"))"
+
   # download feed.xml from server
 
   do-scp "$server:$feed_path" old.xml
@@ -137,7 +137,7 @@ function encode-url-param-array {
 function update-series {
   # log in to wordpress add entry to series engine
 
-  for x in series_list speaker wordpress_user wordpress_password location; do
+  for x in http_server series_list speaker wordpress_user wordpress_password location download_url title performer year month day; do
     if [[ -z "${!x}" ]]; then
       >&2 echo "$x must be set in environment"
       exit 1

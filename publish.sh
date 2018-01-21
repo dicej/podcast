@@ -13,6 +13,7 @@ time="$4"
 location="$5"
 date="$6"
 passphrase="$7"
+id="$8"
 
 # match the series IDs in the WordPress database:
 function series {
