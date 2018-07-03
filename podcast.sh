@@ -81,7 +81,7 @@ function url-encode {
 }
 
 function sanitize {
-  echo "$1" | sed 's/?//g'
+  echo "$1" | sed 's/[?:]//g'
 }
 
 full_title_sanitized="$(sanitize "$full_title")"
